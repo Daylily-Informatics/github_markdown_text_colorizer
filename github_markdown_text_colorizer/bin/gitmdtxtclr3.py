@@ -57,7 +57,7 @@ class ImageServer:
             font_files = find_system_fonts()
             fonts = ['default']
             for i in font_files:
-                fonts.append(os.path.basename(i).rstrip('.ttf'))
+                fonts.append(os.path.basename(i).split('.ttf')[0])
 
             if font in ['default']:
                 font = ImageFont.load_default()
