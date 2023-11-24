@@ -26,7 +26,7 @@ class ImageServer:
 
         # Return image or link
         if ret_type == "img":
-            return cherrypy.lib.static.serve_file(filepath, "image/png")
+            return cherrypy.lib.static.serve_file(os.path.abspath(filepath), "image/png")
         else:
             return cherrypy.url(filepath)
 
