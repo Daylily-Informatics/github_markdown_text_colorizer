@@ -31,7 +31,7 @@ _this service has no promises re:uptime! run your own service if you require hig
 
   Change The Font, Colors, Size
   
-  <img src="http://flux.glass/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=SourceCodePro-Regular&font_size=24&width=249&ret_type=img" />
+  <img src="http://flux.glass/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" />
   
 ... you get the idea
 
