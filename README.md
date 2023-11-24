@@ -18,15 +18,21 @@ _this service has no promises re:uptime! run your own service if you require hig
 
 ##### Dynamically Generated Img Using Link Generated Above
 
-> Use in markdown :: <img src="http://flux.glass/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
+> Use in markdown `<img src="http://flux.glass/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" /> `
 
-Using The Link Produced Above
+  Using The Link Produced Above
+
   <img src="http://flux.glass/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
 
-Changing The Link Text & Color
+  Changing The Link Text & Color
 
-<img src="http://flux.glass/format_gh_text?txt=Embedding+W%2FColor&bg_color=%237c66ea&txt_color=%23d1e821&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=228&ret_type=img" />
+  <img src="http://flux.glass/format_gh_text?txt=Embedding+W%2FColor&bg_color=%237c66ea&txt_color=%23d1e821&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=228&ret_type=img" />
 
+
+  Change The Font, Colors, Size
+  
+  <img src="http://flux.glass/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=SourceCodePro-Regular&font_size=24&width=249&ret_type=img" />
+  
 ... you get the idea
 
 # Install And Run Service Yourself (advised for dynamic use)
