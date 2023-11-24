@@ -1,5 +1,5 @@
 # Text To Styled Image Service
-Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags.  ie:  here!
+Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags. <img src="http://flux.glass/format_gh_text?txt=ie%3A+here%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=16&width=249&ret_type=img" />
 
 # Quickest Start
 ## Demo Service
