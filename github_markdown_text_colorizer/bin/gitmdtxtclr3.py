@@ -4,6 +4,25 @@ import hashlib
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 
+
+
+def find_system_fonts():
+    # Common font directories
+    font_directories = ["/usr/share/fonts", "/usr/local/share/fonts", "/Library/Fonts", "~/Library/Fonts", "/Windows/Fonts"]
+    ttf_fonts = []
+
+    for directory in font_directories:
+        # Expand user and environment variables in the path
+        directory = os.path.expanduser(os.path.expandvars(directory))
+
+        if os.path.isdir(directory):
+            for root, dirs, files in os.walk(directory):
+                for file in files:
+                    if file.endswith(".ttf"):
+                        ttf_fonts.append(os.path.join(root, file))
+
+    return ttf_fonts
+
 class ImageServer:
 
     @cherrypy.expose
@@ -35,7 +54,15 @@ class ImageServer:
         try:
             font = ImageFont.truetype(font, font_size)
         except IOError:
-            font = ImageFont.load_default()
+            font_files = find_system_fonts()
+            fonts = []
+            for i in font_files:
+                fonts.append(os.path.basename(i).rstrip('.ttf'))
+
+            if font in ['arial']:
+                font = ImageFont.load_default()
+            else:
+                raise Exception(f"\n\nThe font you specified: {font} ... does not have a matching ttf file. Valid choices are: {fonts}.\n\n")
 
         # Create a dummy image to calculate text size
         dummy_img = Image.new("RGB", (width, 100))
