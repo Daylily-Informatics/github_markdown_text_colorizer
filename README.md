@@ -1,7 +1,29 @@
-# github_markdown_text_colorizer
-Service to return images of text where the input text can have font, font size and color set.  Intended as a way to insert colorized and font configurable text into github markdown files. This will need to be hosted someplace accessible to GH to work.
+# Text To Styled Image Service
+Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags.  ie:  here!
 
-# Install
+# Quickest Start
+## Demo Service
+_this service has no promises re:uptime! run your own service if you require high reliability_
+
+### [http://flux.glass](http://flux.glass)
+  * This service is running the current version of this repo. You may create and download images, or experiment with embedding them.
+
+<img width="1243" alt="fglass" src="https://github.com/Daylily-Informatics/github_markdown_text_colorizer/assets/4713659/cc1ddbbb-0668-49a6-9e7c-d23e1f3874c0">
+
+
+#### Embedding
+> Enter values via the UI and get your embeddable link.
+##### UI
+<img width="1311" alt="fgembed" src="https://github.com/Daylily-Informatics/github_markdown_text_colorizer/assets/4713659/539506d9-78c9-4ccf-ac45-0ff9371da767">
+
+##### Dynamically Generated Img Using Link Generated Above
+```
+Use in markdown :: <img src="http://flux.glass/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
+```
+<img src="http://flux.glass/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
+
+
+# Install And Run Service Yourself
 Likely only will run on mac or linux.
 
 ## Clone this repo
