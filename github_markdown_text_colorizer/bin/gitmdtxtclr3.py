@@ -27,7 +27,7 @@ class ImageServer:
 
     @cherrypy.expose
     def format_gh_text(self, txt="", bg_color="white", txt_color="black", 
-                       width="100", font_size="20", font="arial", ret_type="link"):
+                       width="100", font_size="20", font="Monoid-Regular-HalfTight-Dollar-0-1-l", ret_type="link"):
         
         # Convert string width and font_size to integers
         width = int(width)
@@ -55,11 +55,11 @@ class ImageServer:
             font = ImageFont.truetype(font, font_size)
         except IOError:
             font_files = find_system_fonts()
-            fonts = []
+            fonts = ['default']
             for i in font_files:
                 fonts.append(os.path.basename(i).rstrip('.ttf'))
 
-            if font in ['arial']:
+            if font in ['default']:
                 font = ImageFont.load_default()
             else:
                 try:
