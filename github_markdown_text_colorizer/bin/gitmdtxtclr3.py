@@ -7,7 +7,9 @@ import textwrap
 
 
 if len(sys.argv) > 1:
-    root_url = sys.argv[1] + '/'
+    root_url = sys.argv[1]
+    if not root_url.endswith('/'):
+        root_url += '/'
 else:
     root_url = "http://localhost:8081" + '/'
 
@@ -382,7 +384,7 @@ class ImageServer:
 
                     // Update the URL text
                     document.getElementById('requestUrl').textContent = 'Request URL :: """+root_url+"""' + url;
-                    document.getElementById('requestUrl2').textContent = 'Use in markdown :: <img src="""+root_url+"""' + url + ' />';
+                    document.getElementById('requestUrl2').textContent = 'Use in markdown :: <img src=\""""+root_url+"""' + url + '\" />';
                     // Assuming the server responds with an image or a link to an image
                     if (formData.get('ret_type') === 'img') {
                         // Load and display the image
@@ -415,6 +417,6 @@ if __name__ == '__main__':
     }
     cherrypy.config.update({
         'server.socket_host': '0.0.0.0',
-        'server.socket_port': 8081,
+        'server.socket_port': 80,
     })
     cherrypy.quickstart(ImageServer(), '/', conf)
