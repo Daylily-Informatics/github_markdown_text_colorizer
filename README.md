@@ -24,6 +24,17 @@ mkdir -p cache
 python github_markdown_text_colorizer/bin/gitmdtxtclr3.py
 
 ```
+Will output
+
+```text
+[23/Nov/2023:16:36:57] ENGINE Listening for SIGTERM.
+[23/Nov/2023:16:36:57] ENGINE Listening for SIGHUP.
+[23/Nov/2023:16:36:57] ENGINE Listening for SIGUSR1.
+[23/Nov/2023:16:36:57] ENGINE Bus STARTING
+[23/Nov/2023:16:36:57] ENGINE Started monitor thread 'Autoreloader'.
+[23/Nov/2023:16:36:57] ENGINE Serving on http://127.0.0.1:8080
+[23/Nov/2023:16:36:57] ENGINE Bus STARTED
+```
 
 # Development Notes
 Start to first satisfying working draft ~50m.
