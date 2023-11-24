@@ -8,7 +8,7 @@ import textwrap
 
 def find_system_fonts():
     # Common font directories
-    font_directories = ["/usr/share/fonts", "/usr/local/share/fonts", "/Library/Fonts", "~/Library/Fonts", "/Windows/Fonts"]
+    font_directories = ["/usr/share/fonts", "/usr/local/share/fonts", "/Library/Fonts", "~/Library/Fonts", "/Windows/Fonts", "github_markdown_text_colorizer/fonts/"]
     ttf_fonts = []
 
     for directory in font_directories:
@@ -62,7 +62,11 @@ class ImageServer:
             if font in ['arial']:
                 font = ImageFont.load_default()
             else:
-                raise Exception(f"\n\nThe font you specified: {font} ... does not have a matching ttf file. Valid choices are: {fonts}.\n\n")
+                try:
+                    font_path = f"github_markdown_text_colorizer/fonts/{font}.ttf"  # Update this path as necessary
+                    font = ImageFont.truetype(font_path, font_size)
+                except Exception as e:
+                   raise Exception(f"\n\nThe font you specified: {font} ... does not have a matching ttf file. Valid choices are: {fonts}.\n\n{e}\n\n")
 
         # Create a dummy image to calculate text size
         dummy_img = Image.new("RGB", (width, 100))
