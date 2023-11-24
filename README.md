@@ -36,6 +36,15 @@ Will output
 [23/Nov/2023:16:36:57] ENGINE Bus STARTED
 ```
 
+# Next Steps
+
+## How To Use In GH.md
+...
+
+## Expose Service For Public Use
+Or at least consider it.
+
+
 # Development Notes
-Start to first satisfying working draft ~50m.
+Start to first satisfying working draft ~40m.
 * [Dev work running notes](github_markdown_text_colorizer/docs/chatgpt_convo.md)
