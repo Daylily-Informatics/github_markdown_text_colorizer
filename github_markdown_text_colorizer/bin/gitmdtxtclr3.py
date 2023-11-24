@@ -1,10 +1,15 @@
 import cherrypy
 import os
+import sys
 import hashlib
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 
 
+if len(sys.argv) > 1:
+    root_url = sys.argv[1] + '/'
+else:
+    root_url = "http://localhost:8081" + '/'
 
 def find_system_fonts():
     # Common font directories
@@ -23,11 +28,23 @@ def find_system_fonts():
 
     return ttf_fonts
 
+def get_system_fonts():
+    font_files = find_system_fonts()
+    fonts = ['default']
+    for i in font_files:
+        fonts.append(os.path.basename(i).split('.ttf')[0])
+
+    return fonts
+
+
 class ImageServer:
 
     @cherrypy.expose
     def format_gh_text(self, txt="", bg_color="white", txt_color="black", 
                        width="100", font_size="20", font="Monoid-Regular-HalfTight-Dollar-0-1-l", ret_type="link"):
+        
+        if len(txt) < 1 or len(txt) > 3333:
+            raise Exception("Text must be between 1 and 3333 characters long")
         
         # Convert string width and font_size to integers
         width = int(width)
@@ -54,11 +71,11 @@ class ImageServer:
         try:
             font = ImageFont.truetype(font, font_size)
         except IOError:
-            font_files = find_system_fonts()
-            fonts = ['default']
-            for i in font_files:
-                fonts.append(os.path.basename(i).split('.ttf')[0])
-
+            #font_files = find_system_fonts()
+            #fonts = ['default']
+            #for i in font_files:
+            #    fonts.append(os.path.basename(i).split('.ttf')[0])
+            fonts = get_system_fonts()  
             if font in ['default']:
                 font = ImageFont.load_default()
             else:
@@ -101,6 +118,290 @@ class ImageServer:
         # Save the image
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
         img.save(filepath)
+
+    @cherrypy.expose
+    def _ret_header(self):
+        ret_html = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>ratios</title>
+            <style>
+                body {
+                    font-family: 'Dosis', Arial, sans-serif;
+                    background-color: #111111; /* Very dark background */
+                    color: #ffffff; /* White text */
+                    text-align: center;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh; /* Center content vertically */
+                }
+                .container {
+                    margin-top: 20px;
+                    background-color: #0b131a; /* Dark blue/gray background */
+                    padding: 20px;
+                    border-radius: 5px;
+                    width: 83%;
+                }
+                .field {
+                    font-size: 36px;
+                    font-weight: bold;
+                    padding: 20px;
+                    color: #ffffff; /* White text for fields */
+                }
+                #ratio {
+                    font-size: 48px;
+                    font-weight: bold;
+                    margin: 20px 0;
+                    color: #ffffff; /* White text for ratio */
+                }
+                button {
+                    font-size: 36px;
+                    padding: 10px 20px; /* Adjusted padding to shrink button size by 50% */
+                    background-color: #e74c3c; /* Dark red button color */
+                    color: #ffffff; /* White text for button */
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease; /* Smooth background color transition */
+                }
+                button:hover {
+                    background-color: #ff5733; /* Brighter red on hover for the button */
+                }
+                .date {
+                    font-size: 24px;
+                    color: #444444; /* Dark gray text for date */
+                    margin-top: 20px;
+                }
+            </style>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap">
+
+        """
+    
+        return ret_html
+    
+    @cherrypy.expose
+    def index(self):
+        
+        font_opts = "<select style='width:80%;' name=font ><option value='Monoid-Regular-HalfTight-Dollar-0-1-l' selected>Monoid-Regular-HalfTight-Dollar-0-1-l</option>"
+        for i in sorted(get_system_fonts()): 
+            font_opts += f"<option value='{i}'>{i}</option>"
+        font_opts += "</select>"
+        
+        ret_html = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>GitHub Markdown Text Colorizer</title>
+       <script>
+        function updateRGBValue() {
+            var hexColor = document.getElementById('bg_color').value;
+            var rgbColor = hexToRGB(hexColor);
+            document.getElementById('bg_color').style.backgroundColor = rgbColor;
+            document.getElementById('color_value').textContent = rgbColor;
+            document.getElementById('color_value').style.color = rgbColor;  
+        }
+ function updateRGBValue2() {
+            var hexColor2 = document.getElementById('txt_color').value;
+            var rgbColor2 = hexToRGB(hexColor2);
+            document.getElementById('txt_color').style.backgroundColor = rgbColor2;
+            document.getElementById('color_value2').textContent = rgbColor2;
+            document.getElementById('color_value2').style.color = rgbColor2;
+
+        }
+        function hexToRGB(hex) {
+            var r = parseInt(hex.substring(1, 3), 16);
+            var g = parseInt(hex.substring(3, 5), 16);
+            var b = parseInt(hex.substring(5, 7), 16);
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+    </script>
+            <style>
+                body {
+                    font-family: 'Dosis', Arial, sans-serif;
+                    background-color: #111111; /* Very dark background */
+                    color: #ffffff; /* White text */
+                    text-align: center;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh; /* Center content vertically */
+                }
+                .container {
+                    background-color: #0b131a; /* Dark blue/gray background */
+                    padding: 20px;
+                    border-radius: 5px;
+                    width: 90%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .form-container, .result-container {
+                    flex: 1;
+                    margin: 10px;
+                }
+                .navigation a {
+                    color: #ffffff; /* White text for navigation links */
+                    padding: 10px 20px;
+                    margin: 0 10px;
+                    background-color: #0b131a; /* Dark blue/gray background for navigation links */
+                    border-radius: 5px;
+                    text-decoration: none;
+                    transition: background-color 0.3s ease;
+                }
+                .navigation a:hover {
+                    background-color: #e74c3c; /* Dark red background on hover for navigation links */
+                }
+                a {
+                    color: #e74c3c; /* Red text for links */
+                }
+                button {
+                    font-size: 20px;
+                    padding: 10px 20px;
+                    background-color: #e74c3c; /* Dark red button color */
+                    color: #ffffff; /* White text for button */
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease; /* Smooth background color transition */
+                }
+                button:hover {
+                    background-color: #ff5733; /* Brighter red on hover for the button */
+                }
+                .form-field {
+                    margin: 10px 0;
+                    color: #ffffff;
+                }
+                input, select {
+                    padding: 10px;
+                    border-radius: 5px;
+                    border: 1px solid #ffffff;
+                    background-color: #0b131a;
+                    color: #ffffff;
+                    width: 20%;
+                }
+                #requestUrl {
+                    color: #e74c3c; /* URL text color */
+                }
+                .result-image {
+                    max-width: 100%;
+                    height: auto;
+                }
+            </style>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap">
+        </head>
+        <body>
+            <div class="container">
+                <div class="form-container">
+                    <h1><a href=https://github.com/Daylily-Informatics/github_markdown_text_colorizer>GitHub Markdown Text Colorizer</a></h1>
+                    <div class="navigation">
+                        <a href="https://github.com/Daylily-Informatics">Daylily Informatics</a>
+                        <a href="https://github.com/Daylily-Informatics/img_stitcher_day">Tube Image Stitcher</a>
+                        <a href="https://en.wikipedia.org/wiki/Petrichor">Petrichor</a>
+                        
+                    </div><br>
+                    <h2>Two Use Cases</h2>
+                    <ul>
+                    <p> Create an image of your text, save the image, and use it elsewhere. 
+                    <p> Formulate the markdown img tag, and use it in your markdown. 
+                    </ul>
+                    <br>
+                    <hr>
+                    <br><br>
+                    <form style='text-align: inherit;' id="colorizerForm">
+                        <div class="form-field">
+                            <label for="txt">Text:</label>
+                            <input style='width: 85%;' type="text" id="txt" name="txt" value="">
+                        </div>
+                        <div class="form-field">
+                        <br>
+                        <table width='100%' ><tr width=100% ><td width='50%' align=center >
+                            <label for="bg_color" >Background Color: <small id="color_value" name="color_value" >rgb(255,255,255)</small></label>
+                            <input type="color" id="bg_color" name="bg_color" value="#FFFFFF" onchange="updateRGBValue()" >
+
+                 </td><td width='50%' align=center >
+                            <label for="txt_color">Text Color: <small id="color_value2" name="color_value2" >rgb(0,0,0)</small></label>
+                            <input type="color" id="txt_color" name="txt_color" value="#000000"  onchange="updateRGBValue2()" />
+</td></tr></table>
+<br>
+                        </div>
+                         <div class="form-field">
+                          <table width=100% ><tr width=100% ><td width='70%'>
+
+                            <label for="font">Font:</label>
+                            """+font_opts+"""
+                        </td><td width=30%'  >
+                           <label for="font_size">Font Size:</label>
+                            <input type="text"   id="font_size" name="font_size" value="20">
+                        </td></tr></table>
+                        <br>
+                        </div>
+                       <div class="form-field">
+                          <table width=100% ><tr width=100% ><td width='50%'>
+
+                        <label for="width">Img Width:</label>
+                        <input type="text" id="width" name="width" value="100">
+                        </td><td width='50%'>
+                            <label for="ret_type">Return Type:</label>
+                            <select style='width: 50%;' id="ret_type" name="ret_type">
+                                <option value="img">Image</option>
+                                <option value="link">Link</option>
+                            </select>
+                        </td></tr></table>
+                        <br>
+                        </div>
+                        <div class="form-field" style='align:center;' >
+                        <button style='align:center;' type="button" onclick="submitForm()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="result-container">
+                <br><br><br><br>
+                <p>NOTICE: this is a proof of concept & there are no guaruntees re: availability.  <br><a href=https://github.com/Daylily-Informatics/github_markdown_text_colorizer >__for routine use, set up your own service__</a></p>
+                    <p id="requestUrl"></p>
+                    <p id="requestUrl2"></p>
+                    
+                    <img id="resultImage" class="result-image" />
+                </div>
+            </div>
+
+            <script>
+                function submitForm() {
+                    const form = document.getElementById('colorizerForm');
+                    const formData = new FormData(form);
+                    const queryString = new URLSearchParams(formData).toString();
+                    const url = `format_gh_text?${queryString}`;
+
+                    // Update the URL text
+                    document.getElementById('requestUrl').textContent = 'Request URL :: """+root_url+"""' + url;
+                    document.getElementById('requestUrl2').textContent = 'Use in markdown :: <img src="""+root_url+"""' + url + ' />';
+                    // Assuming the server responds with an image or a link to an image
+                    if (formData.get('ret_type') === 'img') {
+                        // Load and display the image
+                        const img = document.getElementById('resultImage');
+                        img.src = url;
+                    } else {
+                        // Open the link in a new tab/window
+                        window.open(url, '_blank');
+                    }
+
+                    return false; // Prevent default form submission
+                }
+            </script>
+        </body>
+        </html>
+        """
+        
+        return ret_html
+
 
 if __name__ == '__main__':
     conf = {
