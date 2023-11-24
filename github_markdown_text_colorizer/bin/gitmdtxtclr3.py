@@ -302,7 +302,7 @@ class ImageServer:
         </head>
         <body>
             <div class="container">
-                <div class="form-container">
+                <div class="form-container" width=60% >
                     <h1><a href=https://github.com/Daylily-Informatics/github_markdown_text_colorizer>GitHub Markdown Text Colorizer</a></h1>
                     <div class="navigation">
                         <a href="https://github.com/Daylily-Informatics">Daylily Informatics</a>
@@ -365,15 +365,16 @@ class ImageServer:
                         </div>
                     </form>
                 </div>
-                <div class="result-container">
+                <div class="result-container" >
                 <br><br><br><br>
                 <p>NOTICE: this is a proof of concept & there are no guaruntees re: availability.  <br><a href=https://github.com/Daylily-Informatics/github_markdown_text_colorizer >__for routine use, set up your own service__</a></p>
-                    <p id="requestUrl"></p>
+
+                            <p id="requestUrl"></p>
                     <p id="requestUrl2"></p>
-                    
+
                     <img id="resultImage" class="result-image" />
                 </div>
-            </div>
+             </div>
 
             <script>
                 function submitForm() {
