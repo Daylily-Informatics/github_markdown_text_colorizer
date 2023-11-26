@@ -43,7 +43,7 @@ class ImageServer:
 
     @cherrypy.expose
     def format_gh_text(self, txt="", bg_color="white", txt_color="black", 
-                       width="100", font_size="20", font="Monoid-Regular-HalfTight-Dollar-0-1-l", ret_type="link"):
+                       width="100", font_size="22", font="Monoid-Regular-HalfTight-Dollar-0-1-l", ret_type="link"):
         
         if len(txt) < 1 or len(txt) > 3333:
             raise Exception("Text must be between 1 and 3333 characters long")
@@ -342,7 +342,7 @@ class ImageServer:
                             """+font_opts+"""
                         </td><td width=30%'  >
                            <label for="font_size">Font Size:</label>
-                            <input type="text"   id="font_size" name="font_size" value="20">
+                            <input type="text"   id="font_size" name="font_size" value="22">
                         </td></tr></table>
                         <br>
                         </div>
