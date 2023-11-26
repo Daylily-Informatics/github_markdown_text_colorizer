@@ -72,11 +72,9 @@ Will output
 
 # Next Steps
 
-## How To Use In GH.md
-...
-
-## Expose Service For Public Use
-Or at least consider it.
+## Limtations
+* [flux.glass is not for operational use](flux.glass)
+* The fonts available have optimal font sizes, and when not set to these sizes, can look blurry.
 
 
 # Development Notes
