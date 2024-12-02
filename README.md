@@ -1,11 +1,11 @@
-# [Text To Styled & Colorized Image Service](https://gtc.dyly.bio)
-Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags. <img src="https://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />, which looks like this `<img src="https://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />`, you can generate these urls [here](https://gtc.dyly.bio).
+# [Text To Styled & Colorized Image Service](http://gtc.dyly.bio)
+Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags. <img src="http://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />, which looks like this `<img src="http://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />`, you can generate these urls [here](http://gtc.dyly.bio).
 
 # Quickest Start
 ## Demo Service
 _this service has no promises re:uptime! run your own service if you require high reliability_
 
-### [https://gtc.dyly.bio](https://gtc.dyly.bio)
+### [http://gtc.dyly.bio](http://gtc.dyly.bio)
   * This service is running the current version of this repo. You may create and download images, or experiment with embedding them.
 
 <img width="1243" alt="fglass" src="https://github.com/Daylily-Informatics/github_markdown_text_colorizer/assets/4713659/cc1ddbbb-0668-49a6-9e7c-d23e1f3874c0">
@@ -18,24 +18,24 @@ _this service has no promises re:uptime! run your own service if you require hig
 
 ##### Dynamically Generated Img Using Link Generated Above
 
-> Use in markdown `<img src="https://gtc.dyly.bio/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" /> `
+> Use in markdown `<img src="http://gtc.dyly.bio/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" /> `
 
   Using The Link Produced Above
 
-  <img src="https://gtc.dyly.bio/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
+  <img src="http://gtc.dyly.bio/format_gh_text?txt=Embedding&bg_color=%23121111&txt_color=%2309caf1&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=140&ret_type=img" />
 
   Changing The Link Text & Color
 
-  <img src="https://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%237c66ea&txt_color=%23d1e821&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=228&ret_type=img" />
+  <img src="http://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%237c66ea&txt_color=%23d1e821&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=20&width=228&ret_type=img" />
 
 
   Change The Font, Colors, Size
   
-  <img src="https://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" />
+  <img src="http://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" />
   
 ... you get the idea
 
-##  <img src="https://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" alt=xxx />
+##  <img src="http://gtc.dyly.bio/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" alt=xxx />
 
 
 
