@@ -1,4 +1,4 @@
-# [Text To Styled & Colorized Image Service](http://dyly.bio:8080)
+# [Text To Styled & Colorized Image Service](http://gtc.dyly.bio)
 Service to return images of specified text where text color, bg color, font and font size can be configured.  Images may be generated via the service, or dyanmically requested and used in `<img />` tags. <img src="http://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />, which looks like this `<img src="http://gtc.dyly.bio/format_gh_text?txt=this+is+dynamic%2C+and+check+out+these+0%27s&bg_color=%239e0a72&txt_color=%2361edff&font=Monoid-Regular-HalfTight-Dollar-0-1-l&font_size=22&width=249&ret_type=img" />`, you can generate these urls [here](http://gtc.dyly.bio).
 
 # Quickest Start
