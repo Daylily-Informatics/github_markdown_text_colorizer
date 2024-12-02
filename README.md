@@ -39,7 +39,10 @@ _this service has no promises re:uptime! run your own service if you require hig
 Likely only will run on mac or linux.
 
 ## Clone this repo
-  * currently not a pip installable package
+```bash
+git clone git@github.com:Daylily-Informatics/github_markdown_text_colorizer.git
+cd github_markdown_text_colorizer
+```
 
 ## Environment
 I'm a fan of conda.
