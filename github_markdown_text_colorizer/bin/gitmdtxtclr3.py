@@ -9,7 +9,7 @@ ip=sys.argv[1]
 port=int(sys.argv[2])
 ext_ip=sys.argv[3]
 
-root_url=ext_ip+":"+port+"/"
+root_url=ext_ip+":"+str(port)+"/"
 
 def find_system_fonts():
     # Common font directories
