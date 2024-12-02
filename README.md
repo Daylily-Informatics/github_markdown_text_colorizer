@@ -35,6 +35,10 @@ _this service has no promises re:uptime! run your own service if you require hig
   
 ... you get the idea
 
+##  <img src="http://dyly.bio:8080/format_gh_text?txt=Embedding+W%2FColor&bg_color=%2315e595&txt_color=%236721e8&font=arial&font_size=24&width=249&ret_type=img" alt=xxx />
+
+
+
 # Install And Run Service Yourself (advised for dynamic use)
 Likely only will run on mac or linux.
 
@@ -78,6 +82,7 @@ Will output
 ## Limtations
 * [dyly.bio:8080 is not for operational use](dyly.bio:8080)
 * The fonts available have optimal font sizes, and when not set to these sizes, can look blurry.
+* These can not be used in header tagged lines.
 
 
 # Development Notes
