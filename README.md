@@ -80,7 +80,7 @@ Will output
 # Next Steps
 
 ## Limtations
-* [gtc.dyly.bio is not for operational use](gtc.dyly.bio)
+* [the demo server, gtc.dyly.bio](https://gtc.dyly.bio) is not intended for operational use.
 * The fonts available have optimal font sizes, and when not set to these sizes, can look blurry.
 * These can not be used in header tagged lines.
 
