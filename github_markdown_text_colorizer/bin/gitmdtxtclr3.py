@@ -5,13 +5,11 @@ import hashlib
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 
+ip=sys.argv[1]
+port=sys.argv[2]
+ext_ip=sys.argv[3]
 
-if len(sys.argv) > 1:
-    root_url = sys.argv[1]
-    if not root_url.endswith('/'):
-        root_url += '/'
-else:
-    root_url = "http://localhost:8081" + '/'
+root_url=ext_ip+":"+port+"/"
 
 def find_system_fonts():
     # Common font directories
@@ -417,7 +415,7 @@ if __name__ == '__main__':
         }
     }
     cherrypy.config.update({
-        'server.socket_host': '0.0.0.0',
-        'server.socket_port': 8080,
+        'server.socket_host': ip,
+        'server.socket_port': port,
     })
     cherrypy.quickstart(ImageServer(), '/', conf)

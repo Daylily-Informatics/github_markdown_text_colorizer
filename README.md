@@ -58,7 +58,7 @@ conda create -n GMTC -c conda-forge python ipython pytest pip Pillow==9.5.0 cher
 
 conda activate GMTC
 mkdir -p cache
-python github_markdown_text_colorizer/bin/gitmdtxtclr3.py
+python github_markdown_text_colorizer/bin/gitmdtxtclr3.py 0.0.0.0 8080 http://PUBLIC_IP # :<PORT> will be appended
 
 ```
 Will output
