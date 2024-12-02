@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 import textwrap
 
 ip=sys.argv[1]
-port=sys.argv[2]
+port=int(sys.argv[2])
 ext_ip=sys.argv[3]
 
 root_url=ext_ip+":"+port+"/"
